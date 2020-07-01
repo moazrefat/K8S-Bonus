@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: {{ .Values.environment }}
+spec:
+  replicas: {{ .Values.maindb.replicaCount }}
+  selector:
+    matchLabels:
+      tier: back
+      app: mysql-db
+  minReadySeconds: 10
+#  strategy:
+#    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql-db
+        role: db
+        tier: back
+    spec:
+      containers:
+      - image: {{ .Values.maindb.image }}
+        name: mysql-db
+        imagePullPolicy: Always
+        ports:
+        - containerPort: {{ .Values.maindb.port }}
+          protocol: TCP
+        envFrom:
+          - configMapRef:
+              name: mysql-config

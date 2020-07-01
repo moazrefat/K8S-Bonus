@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: emp-config
+  namespace: {{ .Values.environment }}
+  labels:
+    app: employees
+data:
+  MYSQL_LB: mysql-db-svc
+  MYSQL_ROOT_PASSWORD: password
+  MYSQL_DATABASE: app
+  MYSQL_USER: root
+  MYSQL_PASSWORD: password
+  VERSION_SERVICE: version-svc
+  APP_ENVIRONMENT: {{ .Values.environment }}

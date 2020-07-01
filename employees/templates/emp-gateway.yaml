@@ -1,0 +1,80 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: employees-getway
+  namespace: {{ .Values.environment }}
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: employees
+  namespace: {{ .Values.environment }}
+  labels:
+    app: employees
+    service: employees
+spec:
+  ports:
+  - port: 8080
+    # name: http
+  selector:
+    app: employees
+    # version: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: employees-vs
+  namespace: {{ .Values.environment }}
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - employees-getway
+  http:
+  - match:
+    - uri:
+        exact: /welcome
+    - uri:
+        exact: /api/version
+    - uri:
+        prefix: /api/details
+    - uri:
+        prefix: /api/register
+    - uri:
+        prefix: /api/health
+    - uri:
+        prefix: /api/info
+    - uri:
+        prefix: /api/hostname
+    route:
+      - destination:
+          host: employees
+          # subnet: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: employees
+  namespace: {{ .Values.environment }}
+spec:
+  host: employees
+  subsets:
+  - labels:
+      version: v1
+    name: v1
+  - labels:
+      version: v2
+    name: v2
+  - labels:
+      version: v3
+    name: v3

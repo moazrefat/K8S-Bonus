@@ -5,7 +5,7 @@
 1. Kuberentes cluster 
 2. Istio as service mesh 
 
-### getting IP address
+### Exporting istio external/public IP address
 ```bash
 export IP=$(kubectl get svc istio-ingressgateway -n istio-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```

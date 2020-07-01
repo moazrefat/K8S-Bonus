@@ -1,5 +1,9 @@
 #### I did write this python/flask application which is supposed to give you the opportunity to register and preview basic details about new employee, the application stores the data in MYSQL DB as backend as well it connects to other microserviece using API and retreive version data too. 
 
+## Prerequisites:
+1. kuberentes cluster 
+2. istio as service mesh 
+
 > Application API:
 >> http://IP/welcome 
 

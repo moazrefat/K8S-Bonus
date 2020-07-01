@@ -1,4 +1,4 @@
-#### I did wrote this python/flask application which is supposed to give you you the opportunity to register and preview basic details about an employee as it stores the data in MYSQL DB as backend as well it connects to other microserviece using API and retreive version data too. 
+#### I did write this python/flask application which is supposed to give you the opportunity to register and preview basic details about new employee, the application stores the data in MYSQL DB as backend as well it connects to other microserviece using API and retreive version data too. 
 
 > Application API:
 >> http://IP/welcome 
@@ -13,7 +13,7 @@
 
 >> http://IP//api/hostname 
   
-#### My idea here is to build to show how the microservices works all together , plus integrating this with service mesh (istio) to acheive different deployment strategies like canary releases, blue/green deployment , traffic injection and mirroring and etcetera
+### My idea here is to build to show how the microservices works all together , plus integrating this with service mesh (istio) to acheive different deployment strategies like canary releases, blue/green deployment , traffic injection and mirroring and etcetera
 
 #### You can register a user by sending post request 
 ```

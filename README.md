@@ -1,9 +1,14 @@
+## Summary
 #### I did write this python/flask application which is supposed to give you the opportunity to register and preview basic details about new employee, the application stores the data in MYSQL DB as backend as well it connects to other microserviece using API and retreive version data too. 
 
-## Prerequisites:
-1. kuberentes cluster 
-2. istio as service mesh 
+## Prerequisites
+1. Kuberentes cluster 
+2. Istio as service mesh 
 
+### getting IP address
+```bash
+export IP=$(kubectl get svc istio-ingressgateway -n istio-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+```
 > Application API:
 >> http://IP/welcome 
 
@@ -19,7 +24,7 @@
   
 ### My idea here is to build to show how the microservices works all together , plus integrating this with service mesh (istio) to acheive different deployment strategies like canary releases, blue/green deployment , traffic injection and mirroring and etcetera
 
-#### You can register a user by sending post request 
+### You can register a user by sending post request 
 ```
 curl -X POST -H "Content-Type: application/json" -d '{
   "firstname": "Mark",

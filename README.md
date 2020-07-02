@@ -5,6 +5,9 @@
 1. Kuberentes cluster 
 2. Istio as service mesh 
 
+## Final application infrastraucture with canary deployment
+![Pipeline demo](app-infra-canary-output.png) 
+
 ### Exporting istio external/public IP address
 ```bash
 export IP=$(kubectl get svc istio-ingressgateway -n istio-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}')

@@ -12,13 +12,16 @@
 ```bash
 export IP=$(kubectl get svc istio-ingressgateway -n istio-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
-> Application API:
+
+### access application via APIs
+```
 >> http://IP/welcome 
 >> http://IP/api/register
 >> http://IP/api/details/[employee_first_name]
 >> http://IP/api/health
 >> http://IP/api/info 
 >> http://IP//api/hostname 
+```
   
 http://IP/welcome 
 ![welcome page](../files/api-welcome.png) 

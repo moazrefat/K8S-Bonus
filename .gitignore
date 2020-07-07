@@ -1,1 +1,8 @@
 .DS_Store
+**/.terraform/*
+aws-terraform-k8s/LICENSE
+aws-terraform-k8s/instance.tf.bckup
+aws-terraform-k8s/mykey*
+aws-terraform-k8s/terraform.tfstate
+aws-terraform-k8s/terraform.tfvars*
+aws-terraform-k8s/files/*

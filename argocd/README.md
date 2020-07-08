@@ -1,3 +1,6 @@
+# Overview
+the idea is once you do any change with your kubernetes infrastructure yaml files/setup , argocd will notice and will apply the changes on the respective environment without any human intervension
+
 # Install Argo 
 ```bash
 kubectl create namespace argocd

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: version-config
+  namespace: default
+  labels:
+    app: version
+data:
+  MYSQL_LB: version-db-svc

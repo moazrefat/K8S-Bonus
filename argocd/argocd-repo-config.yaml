@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: employees-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/moazrefat/kubernetes-labs.git
+    targetRevision: HEAD
+    path: argocd/k8s/prod
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,34 +1,34 @@
 # Overview
 the idea is once you do any change with your kubernetes infrastructure yaml files/setup , argocd will notice and will apply the changes on the respective environment without any human intervension
 
-# Install Argo 
+### Install Argo 
 ```bash
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-# Apply argo configuration
+### Apply argo configuration
 ```bash
 kubectl apply -f argocd-ns.yaml
 kubectl apply -f argocd-repo-config.yaml
 argocd repo add https://github.com/moazrefat/K8S-Bonus --username <username> --password <password>
 ```
 
-# Main DB
+### Main DB
 ```bash
 find . -iname db-configmap.yaml | xargs kubectl apply -f
 find . -iname db-secrets.yaml | xargs kubectl apply -f
 find . -iname db-deploy.yaml | xargs kubectl apply -f
 find . -iname db-svc.yaml | xargs kubectl apply -f
 ```
-## EMP app
+### Employees app
 ```bash
 find . -iname emp-configmap.yaml | xargs kubectl apply -f
 find . -iname emp-gateway.yaml | xargs kubectl apply -f
 find . -iname emp-k8s-setup-v1.yaml | xargs kubectl apply -f
 ```
 
-## Version app
+### Version app
 ```bash
 find . -iname version-setup-v1.yaml | xargs kubectl apply -f
 find . -iname version-svc.yaml | xargs kubectl apply -f
@@ -38,14 +38,14 @@ find . -iname version-configmap.yaml | xargs kubectl apply -f
 find . -iname version-secret.yaml | xargs kubectl apply -f
 ```
 
-## version DB
+### Version DB
 ```bash
 find . -iname version-db-configmap.yaml | xargs kubectl apply -f
 find . -iname version-db-deploy.yaml | xargs kubectl apply -f
 find . -iname version-db-svc.yaml | xargs kubectl apply -f
 ```
 
-# get argo installed apps 
+### get argo installed apps 
 ```bash
 argocd app list
 argocd app get employees
